@@ -64,6 +64,10 @@ For additional information, click [this link](https://github.com/muaz-khan/WebRT
 
 * https://github.com/muaz-khan/Chrome-Extensions/tree/master/desktopCapture-p2p
 
+## Disclaimer
+
+* https://www.webrtc-experiment.com/disclaimer/
+
 ## License
 
-[Chrome-Extensions](https://github.com/muaz-khan/Chrome-Extensions) are released under [MIT licence](https://www.webrtc-experiment.com/licence/) . Copyright (c) [Muaz Khan](https://plus.google.com/+MuazKhan).
+[Chrome-Extensions](https://github.com/muaz-khan/Chrome-Extensions) are released under [MIT license](https://github.com/muaz-khan/Chrome-Extensions/blob/master/LICENSE) . Copyright (c) [Muaz Khan](https://MuazKhan.com).

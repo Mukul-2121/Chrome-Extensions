@@ -1,3 +1,41 @@
+# Please use `getDisplayMedia` instead
+
+```javascript
+getScreenStream(function(screenStream) {
+    video.srcObject = screenStream;
+});
+
+function getScreenStream(callback) {
+    if (navigator.getDisplayMedia) {
+        navigator.getDisplayMedia({
+            video: true
+        }).then(screenStream => {
+            callback(screenStream);
+        });
+    } else if (navigator.mediaDevices.getDisplayMedia) {
+        navigator.mediaDevices.getDisplayMedia({
+            video: true
+        }).then(screenStream => {
+            callback(screenStream);
+        });
+    } else {
+        getScreenId(function(error, sourceId, screen_constraints) {
+            navigator.mediaDevices.getUserMedia(screen_constraints).then(function(screenStream) {
+                callback(screenStream);
+            });
+        });
+    }
+}
+```
+
+## Disclaimer
+
+No more maintaining this extension; as of 2019. So please use at your own risk.
+
+* https://www.webrtc-experiment.com/disclaimer/
+
+----
+
 # Screen-Capturing.js / for [desktopCapture extension](https://github.com/muaz-khan/Chrome-Extensions/tree/master/desktopCapture)
 
 * Demo: https://www.webrtc-experiment.com/Screen-Capturing/
@@ -23,6 +61,34 @@ CDN link:
 ```html
 <script src="https://cdn.webrtc-experiment.com/Screen-Capturing.js"></script>
 <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+```
+
+```javascript
+getScreenStream(function(screenStream) {
+    video.srcObject = screenStream;
+});
+
+function getScreenStream(callback) {
+    if (navigator.getDisplayMedia) {
+        navigator.getDisplayMedia({
+            video: true
+        }).then(screenStream => {
+            callback(screenStream);
+        });
+    } else if (navigator.mediaDevices.getDisplayMedia) {
+        navigator.mediaDevices.getDisplayMedia({
+            video: true
+        }).then(screenStream => {
+            callback(screenStream);
+        });
+    } else {
+        getScreenConstraints(function(error, screen_constraints) {
+            navigator.mediaDevices.getUserMedia(screen_constraints).then(function(screenStream) {
+                callback(screenStream);
+            });
+        });
+    }
+}
 ```
 
 # API
@@ -218,6 +284,6 @@ getScreenId(function (error, sourceId, screen_constraints) {
 </script>
 ```
 
-# License
+## License
 
-[Screen-Capturing.js](https://github.com/muaz-khan/Chrome-Extensions/tree/master/Screen-Capturing.js) is released under [MIT licence](https://www.webrtc-experiment.com/licence/) . Copyright (c) [Muaz Khan](https://plus.google.com/+MuazKhan).
+[Chrome-Extensions](https://github.com/muaz-khan/Chrome-Extensions) are released under [MIT license](https://github.com/muaz-khan/Chrome-Extensions/blob/master/LICENSE) . Copyright (c) [Muaz Khan](https://MuazKhan.com).
